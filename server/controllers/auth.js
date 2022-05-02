@@ -23,7 +23,7 @@ const crearUsuario = async (req, res = response) => {
 
         const token = await generarJWT(usuario.id);
 
-        res.json({ ok: true, token });
+        res.json({ ok: true, usuario, token });
     } catch (error) {
         console.log(error);
         res.status(500).json({

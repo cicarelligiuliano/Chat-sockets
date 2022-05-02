@@ -1,8 +1,19 @@
-import React from 'react';
-import { Outlet } from 'react-router-dom';
+import React, { useContext, useEffect } from 'react';
+import { Outlet, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../auth/AuthContext';
 import '../css/login-register.css';
 
 export const AuthRouter = () => {
+    const navigate = useNavigate();
+
+    const { auth } = useContext(AuthContext);
+
+    useEffect(() => {
+        if (auth.logged) {
+            navigate('/');
+        }
+    }, [auth]);
+
     return (
         <div>
             <div className='limiter'>

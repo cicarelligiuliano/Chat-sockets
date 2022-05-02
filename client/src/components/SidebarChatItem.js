@@ -5,7 +5,10 @@ const SidebarChatItem = () => {
         <div className='chat_list'>
             <div className='chat_people'>
                 <div className='chat_img'>
-                    <img src='https://ptetutorials.com/images/user-profile.png' alt='sunil' />
+                    <img
+                        src='https://png.pngtree.com/png-vector/20190625/ourlarge/pngtree-business-male-user-avatar-vector-png-image_1511454.jpg'
+                        alt='sunil'
+                    />
                 </div>
                 <div className='chat_ib'>
                     <h5>Some random name</h5>

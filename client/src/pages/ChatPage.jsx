@@ -1,10 +1,22 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../auth/AuthContext';
 import { ChatSelect } from '../components/ChatSelect';
 import InboxPeople from '../components/InboxPeople';
 import { Messages } from '../components/Messages';
 import '../css/chat.css';
 
-export const ChatPage = () => {
+export const ChatPage = ({ isAuthenticated }) => {
+    const navigate = useNavigate();
+
+    const { auth } = useContext(AuthContext);
+
+    useEffect(() => {
+        if (!auth.logged) {
+            navigate('/auth/login');
+        }
+    }, [auth]);
+
     return (
         <div className='messaging'>
             <div className='inbox_msg'>
