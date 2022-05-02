@@ -4,12 +4,14 @@ import { AuthContext } from '../auth/AuthContext';
 import { ChatSelect } from '../components/ChatSelect';
 import InboxPeople from '../components/InboxPeople';
 import { Messages } from '../components/Messages';
+import { ChatContext } from '../context/chat/ChatContext';
 import '../css/chat.css';
 
 export const ChatPage = ({ isAuthenticated }) => {
     const navigate = useNavigate();
 
     const { auth } = useContext(AuthContext);
+    const { chatState } = useContext(ChatContext);
 
     useEffect(() => {
         if (!auth.logged) {
@@ -23,7 +25,7 @@ export const ChatPage = ({ isAuthenticated }) => {
                 {/* Inbox people inicio */}
                 <InboxPeople />
 
-                {true ? <ChatSelect /> : <Messages />}
+                {chatState.chatActivo ? <Messages /> : <ChatSelect />}
             </div>
         </div>
     );
